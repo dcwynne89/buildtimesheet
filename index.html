@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BuildTimesheet — Free Weekly Timesheet Generator | Create PDF Timesheets Online</title>
+  <meta name="description" content="Generate professional PDF weekly timesheets for free. Track hours by project and day, calculate totals automatically, and download instantly. No signup required. Optionally sign in to save your work.">
+  <meta name="keywords" content="free timesheet generator, weekly timesheet, timesheet maker, PDF timesheet, timesheet template, track hours, freelancer timesheet, contractor timesheet">
+  <link rel="canonical" href="https://buildtimesheet.co/">
+  <link rel="stylesheet" href="styles.css">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6010936774105671" crossorigin="anonymous"></script>
+  <!-- Open Graph -->
+  <meta property="og:title" content="BuildTimesheet — Free Weekly Timesheet Generator">
+  <meta property="og:description" content="Generate professional PDF weekly timesheets instantly. Track hours by project, auto-calculate totals. No signup required.">
+  <meta property="og:url" content="https://buildtimesheet.co/">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://buildtimesheet.co/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="BuildTimesheet — Free Weekly Timesheet Generator">
+  <meta name="twitter:description" content="Generate professional PDF weekly timesheets instantly. No signup required.">
+  <meta name="twitter:image" content="https://buildtimesheet.co/og-image.png">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "BuildTimesheet",
+    "url": "https://buildtimesheet.co",
+    "description": "Free online weekly timesheet generator. Track hours by project and day, calculate totals automatically, and download professional PDF timesheets instantly.",
+    "applicationCategory": "BusinessApplication",
+    "operatingSystem": "Web",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    },
+    "creator": {
+      "@type": "Organization",
+      "name": "BuildTimesheet",
+      "url": "https://buildtimesheet.co"
+    }
+  }
+  </script>
+  <script src="/build-ecosystem-bar.js" defer></script>
+  <script src="/build-ecosystem-auth.js" defer></script>
+</head>
+<body>
+
+  <!-- ── Navigation ── -->
+  <nav class="navbar" id="navbar">
+    <a href="/" class="navbar-brand">⏰ BuildTimesheet</a>
+    <div class="navbar-links" id="siteNav">
+      <a href="/about.html">About</a>
+    </div>
+  <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation"><span></span><span></span><span></span></button>
+  </nav>
+
+  <!-- ── Hero ── -->
+  <section class="hero-banner">
+    <h1>Your Hours, Documented and Professional</h1>
+    <p>Stop emailing spreadsheets. Generate a clean PDF timesheet with your hours broken down by project and day — ready to send in under 2 minutes.</p>
+  </section>
+
+  <!-- ── Main App ── -->
+  <main class="app-container">
+
+    <!-- ── FORM PANEL ── -->
+    <div class="form-panel" id="formPanel">
+
+      <!-- Your Information -->
+      <div class="form-section">
+        <div class="form-section-header">
+          <h3>📋 Your Information</h3>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="workerName">Your Name *</label>
+            <input type="text" id="workerName" placeholder="John Smith" required>
+          </div>
+          <div class="form-group">
+            <label for="workerEmail">Email</label>
+            <input type="email" id="workerEmail" placeholder="john@example.com">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="workerTitle">Job Title</label>
+            <input type="text" id="workerTitle" placeholder="Senior Developer">
+          </div>
+          <div class="form-group">
+            <label for="workerPhone">Phone</label>
+            <input type="tel" id="workerPhone" placeholder="(555) 123-4567">
+          </div>
+        </div>
+      </div>
+
+      <!-- Company / Client -->
+      <div class="form-section">
+        <div class="form-section-header">
+          <h3>🏢 Company / Client</h3>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="companyName">Company Name</label>
+            <input type="text" id="companyName" placeholder="Acme Corp">
+          </div>
+          <div class="form-group">
+            <label for="supervisorName">Supervisor</label>
+            <input type="text" id="supervisorName" placeholder="Jane Doe">
+          </div>
+        </div>
+        <div class="form-row full">
+          <div class="form-group">
+            <label for="department">Department</label>
+            <input type="text" id="department" placeholder="Engineering">
+          </div>
+        </div>
+      </div>
+
+      <!-- Pay Period -->
+      <div class="form-section">
+        <div class="form-section-header">
+          <h3>📅 Pay Period</h3>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="weekStarting">Week Starting</label>
+            <input type="date" id="weekStarting">
+          </div>
+          <div class="form-group">
+            <label for="weekEnding">Week Ending</label>
+            <input type="date" id="weekEnding" readonly style="opacity:0.7;cursor:not-allowed;">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="hourlyRate">Hourly Rate (optional)</label>
+            <input type="number" id="hourlyRate" placeholder="0.00" min="0" step="0.01">
+          </div>
+          <div class="form-group">
+            <label for="currency">Currency Symbol</label>
+            <input type="text" id="currency" placeholder="$" value="$" maxlength="3">
+          </div>
+        </div>
+      </div>
+
+      <!-- Weekly Hours -->
+      <div class="form-section">
+        <div class="form-section-header">
+          <h3>⏰ Weekly Hours</h3>
+        </div>
+        <div class="timesheet-table-wrap">
+          <table class="timesheet-table">
+            <thead id="gridHeader">
+              <tr>
+                <th>Project</th>
+                <th>Mon</th>
+                <th>Tue</th>
+                <th>Wed</th>
+                <th>Thu</th>
+                <th>Fri</th>
+                <th>Sat</th>
+                <th>Sun</th>
+                <th>Total</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody id="timesheetGrid">
+              <!-- Dynamic rows inserted here -->
+            </tbody>
+            <tfoot>
+              <tr>
+                <td>Daily Totals</td>
+                <td id="dayTotal0">0</td>
+                <td id="dayTotal1">0</td>
+                <td id="dayTotal2">0</td>
+                <td id="dayTotal3">0</td>
+                <td id="dayTotal4">0</td>
+                <td id="dayTotal5">0</td>
+                <td id="dayTotal6">0</td>
+                <td class="grand-total" id="grandTotal">0</td>
+                <td></td>
+              </tr>
+            </tfoot>
+          </table>
+        </div>
+        <button type="button" class="btn-add-item" id="btnAddProject">+ Add Project</button>
+
+        <!-- Pay display -->
+        <div class="totals-display" id="payDisplay" style="display:none;">
+          <div class="totals-row"><span>Total Hours</span><span id="dispTotalHours">0</span></div>
+          <div class="totals-row"><span>Hourly Rate</span><span id="dispRate">$0.00</span></div>
+          <div class="totals-row total"><span>Total Pay</span><span id="dispTotalPay">$0.00</span></div>
+        </div>
+      </div>
+
+      <!-- Notes -->
+      <div class="form-section">
+        <div class="form-section-header">
+          <h3>📝 Notes</h3>
+        </div>
+        <div class="form-row full">
+          <div class="form-group">
+            <label for="notes">Notes</label>
+            <textarea id="notes" rows="3" placeholder="Any additional notes about this timesheet period..."></textarea>
+          </div>
+        </div>
+      </div>
+
+      <!-- Download -->
+      <button type="button" class="btn-download" id="btnDownload">
+        ⬇ Download Timesheet PDF
+      </button>
+    </div>
+
+    <!-- ── PREVIEW PANEL ── -->
+    <div class="preview-panel" id="previewPanel">
+      <div class="preview-header">
+        <h3>📄 Live Preview</h3>
+        <span style="font-size:0.75rem; color:var(--text-muted)">Updates as you type</span>
+      </div>
+      <div class="preview-body" id="previewBody">
+        <!-- Live timesheet rendered here by JS -->
+      </div>
+    </div>
+
+  </main>
+
+  <!-- ── Toast ── -->
+  <div class="toast" id="toast"></div>
+
+  <!-- ── Pro Tips ── -->
+  <section style="max-width:900px;margin:0 auto;padding:2.5rem 2rem 0;">
+    <h2 style="font-size:0.75rem;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;color:var(--accent-light);margin-bottom:1.25rem;">📌 Timesheet Tips That Actually Make a Difference</h2>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1rem;">
+      <div style="background:var(--bg-card);border:1px solid var(--border);border-radius:10px;padding:1.1rem 1.25rem;">
+        <p style="font-size:0.82rem;font-weight:700;color:var(--text-primary);margin-bottom:0.35rem;">Log hours daily, not at the end of the week</p>
+        <p style="font-size:0.8rem;color:var(--text-secondary);line-height:1.6;">People who fill in timesheets on Friday afternoon routinely undercount by 10–15%. Logging each day takes 30 seconds and makes your records defensible.</p>
+      </div>
+      <div style="background:var(--bg-card);border:1px solid var(--border);border-radius:10px;padding:1.1rem 1.25rem;">
+        <p style="font-size:0.82rem;font-weight:700;color:var(--text-primary);margin-bottom:0.35rem;">Break work into projects, not just "hours"</p>
+        <p style="font-size:0.8rem;color:var(--text-secondary);line-height:1.6;">Clients and managers value visibility. Separating your time by project or task shows exactly where effort went — and makes billing disputes disappear.</p>
+      </div>
+      <div style="background:var(--bg-card);border:1px solid var(--border);border-radius:10px;padding:1.1rem 1.25rem;">
+        <p style="font-size:0.82rem;font-weight:700;color:var(--text-primary);margin-bottom:0.35rem;">Include the hourly rate when billing</p>
+        <p style="font-size:0.8rem;color:var(--text-secondary);line-height:1.6;">If you're billing by the hour, add the rate so the total pay calculates automatically. The client sees the math. No surprises, no back-and-forth.</p>
+      </div>
+      <div style="background:var(--bg-card);border:1px solid var(--border);border-radius:10px;padding:1.1rem 1.25rem;">
+        <p style="font-size:0.82rem;font-weight:700;color:var(--text-primary);margin-bottom:0.35rem;">Get it signed before you submit</p>
+        <p style="font-size:0.8rem;color:var(--text-secondary);line-height:1.6;">Both employee and supervisor signatures make the timesheet a binding record. This matters when disputes arise months later — and they do, especially with contractors.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Footer ── -->
+  <footer class="site-footer">
+    <div style="max-width:860px;margin:0 auto 1.25rem;padding:0 1.5rem;">
+      <p style="font-size:0.75rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--accent);margin-bottom:0.6rem;">Also from the Build ecosystem</p>
+      <div style="display:flex;flex-wrap:wrap;gap:0.75rem;">
+        <a href="https://buildinvoice.co" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:0.4rem;padding:0.35rem 0.85rem;background:rgba(255,255,255,0.05);border:1px solid var(--border);border-radius:6px;font-size:0.8rem;color:var(--text-secondary);text-decoration:none;">⚡ <strong style="color:var(--text-primary);">BuildInvoice</strong> — Free invoice generator</a>
+        <a href="https://buildcertificates.com" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:0.4rem;padding:0.35rem 0.85rem;background:rgba(255,255,255,0.05);border:1px solid var(--border);border-radius:6px;font-size:0.8rem;color:var(--text-secondary);text-decoration:none;">🏅 <strong style="color:var(--text-primary);">BuildCertificates</strong> — Free certificate generator</a>
+        <a href="https://buildpdf.co" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:0.4rem;padding:0.35rem 0.85rem;background:rgba(255,255,255,0.05);border:1px solid var(--border);border-radius:6px;font-size:0.8rem;color:var(--text-secondary);text-decoration:none;">📄 <strong style="color:var(--text-primary);">BuildPDF</strong> — Free file-to-PDF converter</a>
+        <a href="https://buildquotes.co" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:0.4rem;padding:0.35rem 0.85rem;background:rgba(255,255,255,0.05);border:1px solid var(--border);border-radius:6px;font-size:0.8rem;color:var(--text-secondary);text-decoration:none;">💼 <strong style="color:var(--text-primary);">BuildQuotes</strong> — Free price quote generator</a>
+      </div>
+    </div>
+    <p>© 2026 BuildTimesheet · <a href="/about.html">About</a> · <a href="/privacy.html">Privacy</a> · <a href="/terms.html">Terms</a></p>
+  </footer>
+
+  <script src="timesheet-app.js"></script>
+  <script src="timesheet-save-integration.js" defer></script>
+<script>
+    const navToggle = document.getElementById('navToggle');
+    const siteNav = document.getElementById('siteNav');
+    const headerInner = navToggle ? navToggle.closest('.navbar') : null;
+    function closeNav() {
+      siteNav.classList.remove('open'); navToggle.classList.remove('open');
+      document.body.style.overflow = '';
+      const btn = siteNav.querySelector('.nav-close'); if (btn) btn.remove();
+      setTimeout(() => headerInner.appendChild(siteNav), 300);
+    }
+    if (navToggle && siteNav && headerInner) {
+      navToggle.addEventListener('click', () => {
+        const isOpen = siteNav.classList.contains('open');
+        if (!isOpen) {
+          document.body.appendChild(siteNav);
+          const closeBtn = document.createElement('button');
+          closeBtn.className = 'nav-close';
+          closeBtn.setAttribute('aria-label', 'Close menu');
+          closeBtn.innerHTML = '&#x2715;';
+          closeBtn.addEventListener('click', closeNav);
+          siteNav.prepend(closeBtn);
+          requestAnimationFrame(() => { siteNav.classList.add('open'); navToggle.classList.add('open'); });
+          document.body.style.overflow = 'hidden';
+        } else { closeNav(); }
+      });
+      siteNav.querySelectorAll('a').forEach(a => a.addEventListener('click', closeNav));
+    }
+  </script>
+</body>
+</html>

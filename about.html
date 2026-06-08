@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About — BuildTimesheet</title>
+  <meta name="description" content="BuildTimesheet is a free weekly timesheet generator. Learn about our mission to make time tracking simple for freelancers, contractors, and hourly workers.">
+  <link rel="stylesheet" href="styles.css">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6010936774105671" crossorigin="anonymous"></script>
+  <style>.page-container { max-width: 720px; margin: 0 auto; padding: 3rem 2rem; } .page-container h1 { font-size: 2rem; font-weight: 800; background: var(--gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 1.5rem; } .page-container h2 { font-size: 1.2rem; color: var(--accent-light); margin: 2rem 0 0.75rem; } .page-container p { color: var(--text-secondary); line-height: 1.8; margin-bottom: 1rem; } .page-container a { color: var(--accent-light); }</style>
+</head>
+<body>
+  <nav class="navbar"><a href="/" class="navbar-brand">⏰ BuildTimesheet</a><div class="navbar-links" id="siteNav"><a href="/">Generator</a><a href="/about.html" style="color:var(--accent-light)">About</a></div><button class="nav-toggle" id="navToggle" aria-label="Toggle navigation"><span></span><span></span><span></span></button>
+  </nav>
+  <div class="page-container">
+    <h1>About BuildTimesheet</h1>
+
+    <p>I built BuildTimesheet because I was tired of emailing Excel spreadsheets to clients every Friday. The formatting would break, the formulas would get overwritten, and half the time I'd forget to update the date range. I needed something that takes 90 seconds, looks professional, and gives me a PDF I can attach without thinking twice.</p>
+
+    <p>The obvious alternatives — Toggl, Harvest, Clockify — are great if you want a full time-tracking platform with timers, reports, and team management. But if you're a freelancer submitting one timesheet a week, that's a lot of overhead for a simple task. You don't need a dashboard. You need a form and a PDF.</p>
+
+    <h2>What I Actually Built</h2>
+    <p>A form on the left, a live preview on the right. Enter your name, set the week, add your projects, and fill in hours by day. The totals calculate automatically. If you bill hourly, enter your rate and the total pay shows up too. Two minutes, done.</p>
+
+    <p>The print-to-PDF approach means your timesheet looks the same everywhere — no browser rendering weirdness. And the signature blocks at the bottom give it the professional touch that makes supervisors and AP departments happy.</p>
+
+    <h2>Who It's For</h2>
+    <p>Freelancers billing by the hour. Contractors who need to submit weekly timesheets to a project manager. Hourly workers who want a clean record. Anyone who's been asked "can you send me your hours?" and didn't want to open a spreadsheet.</p>
+
+    <h2>Privacy</h2>
+    <p>Your timesheet data stays in your browser. Nothing is sent to a server unless you explicitly sign in and save. The PDF is generated client-side. Your hours, your projects, your business.</p>
+
+    <h2>Part of the Build Ecosystem</h2>
+    <p>BuildTimesheet is one of several tools I've built for independent professionals: <a href="https://buildinvoice.co" target="_blank" rel="noopener">BuildInvoice</a>, <a href="https://buildpdf.co" target="_blank" rel="noopener">BuildPDF</a>, <a href="https://buildquotes.co" target="_blank" rel="noopener">BuildQuotes</a>, <a href="https://buildchangeorder.co" target="_blank" rel="noopener">BuildChangeOrder</a>, and <a href="https://buildcertificates.com" target="_blank" rel="noopener">BuildCertificates</a>. Same philosophy across all of them: tools that do one thing well, no login required.</p>
+
+    <h2>Contact</h2>
+    <p>Questions, bugs, or feature requests? <a href="mailto:buildpdf.help@gmail.com">buildpdf.help@gmail.com</a></p>
+  </div>
+  <footer class="site-footer"><p>© 2026 BuildTimesheet · <a href="/">Generator</a> · <a href="/about.html">About</a> · <a href="/privacy.html">Privacy</a> · <a href="/terms.html">Terms</a></p></footer>
+<script>
+    const navToggle = document.getElementById('navToggle');
+    const siteNav = document.getElementById('siteNav');
+    const headerInner = navToggle ? navToggle.closest('.navbar') : null;
+    function closeNav() {
+      siteNav.classList.remove('open'); navToggle.classList.remove('open');
+      document.body.style.overflow = '';
+      const btn = siteNav.querySelector('.nav-close'); if (btn) btn.remove();
+      setTimeout(() => headerInner.appendChild(siteNav), 300);
+    }
+    if (navToggle && siteNav && headerInner) {
+      navToggle.addEventListener('click', () => {
+        const isOpen = siteNav.classList.contains('open');
+        if (!isOpen) {
+          document.body.appendChild(siteNav);
+          const closeBtn = document.createElement('button');
+          closeBtn.className = 'nav-close';
+          closeBtn.setAttribute('aria-label', 'Close menu');
+          closeBtn.innerHTML = '&#x2715;';
+          closeBtn.addEventListener('click', closeNav);
+          siteNav.prepend(closeBtn);
+          requestAnimationFrame(() => { siteNav.classList.add('open'); navToggle.classList.add('open'); });
+          document.body.style.overflow = 'hidden';
+        } else { closeNav(); }
+      });
+      siteNav.querySelectorAll('a').forEach(a => a.addEventListener('click', closeNav));
+    }
+  </script>
+</body>
+</html>
