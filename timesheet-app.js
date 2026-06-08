@@ -379,7 +379,7 @@ function renderPreviewHTML(d) {
 }
 
 // ── Download ──────────────────────────────────────────────────
-async function downloadTimesheet() {
+function downloadTimesheet() {
   if (isGenerating) return;
 
   const data = collectFormData();
@@ -387,49 +387,47 @@ async function downloadTimesheet() {
   if (data.grandTotal === 0) { showToast("Enter some hours before downloading.", "error"); return; }
 
   isGenerating = true;
-  const btn = $("btnDownload");
-  btn.disabled = true;
-  btn.textContent = "⏳ Generating PDF…";
+  $("btnDownload").disabled = true;
+  $("btnDownload").textContent = "Generating...";
 
-  try {
-    // Use the preview HTML to generate PDF via the browser print
-    const printWindow = window.open('', '_blank', 'width=800,height=600');
-    const previewHTML = renderPreviewHTML(data);
+  const previewHTML = renderPreviewHTML(data);
+  const filename = `timesheet-${(data.worker.name || 'document').replace(/\s+/g, '-').toLowerCase()}-${data.period.start || 'week'}.pdf`;
 
-    printWindow.document.write(`
-      <!DOCTYPE html>
-      <html>
-      <head>
-        <title>Timesheet - ${escHtml(data.worker.name)}</title>
-        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-        <style>
-          * { box-sizing: border-box; margin: 0; padding: 0; }
-          body { font-family: 'Inter', sans-serif; }
-          @media print {
-            body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
-          }
-        </style>
-      </head>
-      <body>${previewHTML}</body>
-      </html>
-    `);
-    printWindow.document.close();
+  const printWindow = window.open('', '_blank');
+  printWindow.document.write(`
+    <!DOCTYPE html>
+    <html>
+    <head>
+      <meta charset="UTF-8">
+      <title>${filename}</title>
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+      <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+      <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Inter', sans-serif; background: #fff; }
+        @media print {
+          body { margin: 0; }
+          @page { size: letter; margin: 0.5in; }
+        }
+      </style>
+    </head>
+    <body>
+      ${previewHTML}
+      <script>
+        // Wait for fonts to load then print
+        document.fonts.ready.then(function() {
+          setTimeout(function() { window.print(); }, 300);
+        });
+      </script>
+    </body>
+    </html>
+  `);
+  printWindow.document.close();
 
-    // Wait for fonts to load then trigger print
-    setTimeout(() => {
-      printWindow.focus();
-      printWindow.print();
-    }, 500);
-
-    showToast("✓ Print dialog opened — save as PDF!", "success");
-  } catch (err) {
-    console.error(err);
-    showToast("Error generating timesheet. Please try again.", "error");
-  } finally {
-    isGenerating = false;
-    btn.disabled = false;
-    btn.textContent = "⬇ Download Timesheet PDF";
-  }
+  isGenerating = false;
+  $("btnDownload").disabled = false;
+  $("btnDownload").textContent = "\u2b07 Download Timesheet PDF";
+  showToast("Timesheet ready \u2014 use Save as PDF in the print dialog", "success");
 }
 
 // ── Helpers ───────────────────────────────────────────────────
